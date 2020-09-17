@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool check;
+            Console.Write("input: ");
+            string s = Console.ReadLine();
+            List<int> numbers = new List<int>();
+            List<int> kol_numbers = new List<int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if ((s[i] >= '0') & (s[i] <= '9'))
+                {
+                    check = false;
+                    for (int j = 0; j < numbers.Count; j++)
+                    {
+                        if ((s[i]) == numbers[j])
+                        {
+                            check = true;
+                            break;
+                        }
+                    }
+                    if (check)
+                        kol_numbers[numbers.IndexOf(s[i])]++;
+                    else
+                    {
+                        numbers.Add(s[i]);
+                        kol_numbers.Add(1);
+                    }
+
+                }
+            }
+            Console.WriteLine("output: ");
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                Console.WriteLine(numbers[i] - 48 + ": " + kol_numbers[i]);
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
